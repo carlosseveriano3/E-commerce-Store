@@ -8,9 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      screens: {
-        'md': '767.20px',
-      },
     },
   },
   plugins: [],

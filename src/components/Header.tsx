@@ -6,6 +6,7 @@ import Menu from '../../public/assets/Menu.svg'
 import User from '../../public/assets/User.svg'
 import Favorites from '../../public/assets/Favorites.svg'
 import Cart from '../../public/assets/Cart.svg'
+import Search from '../../public/assets/Search.svg'
 
 const navLinks = [
   {name: "Livros"},
@@ -76,23 +77,36 @@ export function Header() {
 
       </div>
 
-      <div className="bg-amber-400 h-12 flex items-center justify-between">
-        <div className="flex lg:w-3/4 sm:w-full sm:pl-4 space-x-52">
+      <div className="bg-amber-400 h-12 flex justify-center">
+        
+        <form className="flex items-center focus-within:text-black">
+          <div className="relative text-black">
+            <Image 
+              src={Search}
+              alt="search"
+              className="absolute pointer-events-none my-1 right-3"
+            />
+            <input 
+              type="text" 
+              autoComplete="off" 
+              placeholder="O que você procura?"
+              className="px-3 py-[4px] w-[360px] outline-none rounded-md border-none placeholder-gray-400 ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
+            />
+          </div>
+        </form>
+
+        {/* <div className="flex lg:w-3/4 sm:w-full sm:pl-4 space-x-52">
           <ul className="flex gap-7">
-            <li className="hidden text-black">Livros</li>
-            <li className="hidden text-black">Livros de domínio público</li>
-            <li className="hidden text-black">Categorias</li>
-            <li className="hidden text-black">Contato</li>
+            <li className="hidden text-black md:block">Livros</li>
+            <li className="hidden text-black md:block">Livros de domínio público</li>
+            <li className="hidden text-black md:block">Categorias</li>
+            <li className="hidden text-black md:block">Contato</li>
           </ul>
           
           <div className="">
-            <span className="hidden text-black">Minha estante de livros</span>
+            <span className="hidden text-black md:block">Minha estante de livros</span>
           </div>
-        </div>
-
-        <div>
-          <input className="py-[4px] rounded-lg text-black outline-none" type="text" placeholder="  O que você procura?"/>
-        </div>
+        </div> */}
       </div>
 
     </nav>

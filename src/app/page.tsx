@@ -1,8 +1,10 @@
-import Image from "next/image"
+import { ImageSlider } from "../components/ImageSlider"
 
 export default function Home() {
+
   return (
-    <>
-    </>
+    <div>
+      <ImageSlider />
+    </div>
   )
 }

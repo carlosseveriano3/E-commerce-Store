@@ -1,24 +1,43 @@
 'use client'
 
-import Link from "next/link"
-import Image from "next/image"
-import { useState } from "react"
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 
 
-import Logo from '../../public/book.png'
-import Menu from '../../public/assets/Menu.svg'
-import User from '../../public/assets/User.svg'
-import Favorites from '../../public/assets/Favorites.svg'
-import Cart from '../../public/assets/Cart.svg'
-import Search from '../../public/assets/Search.svg'
-import Close from '../../public/assets/Close.svg'
+import Logo from '../../public/book.png';
+import Menu from '../../public/assets/Menu.svg';
+import User from '../../public/assets/User.svg';
+import Favorites from '../../public/assets/Favorites.svg';
+import Cart from '../../public/assets/Cart.svg';
+import Search from '../../public/assets/Search.svg';
+import Close from '../../public/assets/Close.svg';
 
 export function Header() {
 
-  const [isOpen, setIsOpen] = useState(false);
+  let [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useMemo(() => {
+    if (windowWidth > 766) {
+      setIsOpen(false)
+    }
+  }, [windowWidth])
 
   function getMenuClasses() {
-    let menuClasses: string[] = []
+    let menuClasses: string[] = [];
+    let width = 0;
 
     if (isOpen) {
       menuClasses = [
@@ -122,7 +141,7 @@ export function Header() {
           </div>
         </form>
 
-        <div className={`${getMenuClasses()} ${isOpen? "": "hidden"} space-y-6 md:flex md:justify-center md:space-y-0 md:items-center md:translate-x-14`}>
+        <div className={`${getMenuClasses()} ${isOpen? "": "hidden"} space-y-6 z-10 md:flex md:justify-center md:space-y-0 md:items-center md:translate-x-14`}>
           <div className="flex flex-col space-y-6 -translate-x-14 md:space-y-0 md:flex-row md:items-center">
             <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Livros</Link>
             <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Livros de domínio público</Link>

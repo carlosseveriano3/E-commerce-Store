@@ -16,13 +16,14 @@ import Close from '../../public/assets/Close.svg';
 export function Header() {
 
   let [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -37,7 +38,6 @@ export function Header() {
 
   function getMenuClasses() {
     let menuClasses: string[] = [];
-    let width = 0;
 
     if (isOpen) {
       menuClasses = [
@@ -87,7 +87,7 @@ export function Header() {
             />
           </div>
           <div className="">
-            <span className="font-bold text-2xl text-nowrap">Don't Panic!</span>
+            <span className="font-bold text-2xl text-nowrap antialiased">Don't Panic!</span>
           </div>
         </div>
 

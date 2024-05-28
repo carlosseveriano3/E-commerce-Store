@@ -14,17 +14,21 @@ import arrowRight from "../../public/assets/Arrow-Right.svg"
 export function ImageSlider() {
 
   type AllImages = {
+    id: string
     src: StaticImageData
   }
 
   const slides: AllImages[] = [
     {
+      id: "1",
       src: banner1
     },
     {
+      id: "2",
       src: banner2
     },
     {
+      id: "3",
       src: banner3
     }
   ]
@@ -46,20 +50,15 @@ export function ImageSlider() {
   return(
     <div className="overflow-hidden border-2 group relative">
       <div 
-        className= {`flex transition ease-out duration-500 `}
-        style={{
-          transform: `translateX(-${currentIndex * 100}%)`,
+        className= {`flex transition ease-out duration-500`}
+         style={{
+           transform: `translateX(-${currentIndex * 100}%)`,
         }} 
       >
         {slides.map(slide => {
-          return <Image alt={`banner1${currentIndex}`} src={slide.src} />
+          return <Image key={slide.id} alt={`banner1${currentIndex}`} src={slide.src} />
         })}
         
-        {/* <Image 
-          alt={`banner1${currentIndex}`}
-          src={slides[currentIndex].src}
-          className=""
-        /> */}
       </div>
       <div className="sm:hidden md:hidden lg:hidden group-hover:block top-[95%] sm:top-[75%] md:top-[65%] lg:top-[50%] absolute -translate-x-0 -translate-y-10 lg:translate-y-[-50%] left-2 lg:left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
       <Image 

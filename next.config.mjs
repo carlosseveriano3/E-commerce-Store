@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {hostname: "leitura.com.br"}
+    ]
+  }
+};
 
 export default nextConfig;
-
-// "www.flaticon.com"

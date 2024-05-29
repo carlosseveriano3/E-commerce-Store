@@ -11,10 +11,7 @@ export default function Home() {
         <div className="text-xl font-semibold">
             Livros mais vendidos
         </div>
-        <div className="flex flex-row gap-4">
-            <BestSellers />
-            <BestSellers />
-            <BestSellers />
+        <div className="">
             <BestSellers />
         </div>
       </div>

@@ -1,33 +1,82 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import Slider from "react-slick";
+import cardImages from "../app/card-images"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
 
 export function BestSellers() {
-  return (
-    <div className="">
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 300,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
-      <div className="flex flex-row gap-5 justify-center sm:justify-start">
+  return (
+    <div className="m-auto">
+      <Slider {...settings}>
+      {cardImages.map(card => (
         <div className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
+          
           <Link href="/">
             <Image 
-              src={"https://leitura.com.br/image/cache/products/9788501117847-500x500.jpg"}
+              src={card.src}
               alt="image"
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               className="hover:opacity-90"
             />
           </Link>
 
-          <span className="text-sky-600 font-medium text-center block">
+          <span className="text-sky-600 font-medium text-center block h-20 px-1">
             <Link href="/">
-              Verity
+              {card.name}
             </Link>
           </span>
 
           <span className="text-black text-xl font-bold text-center block">
-            R$42,20
+            R${card.price}
           </span>
 
           <div className="flex flex-row">  
@@ -50,10 +99,10 @@ export function BestSellers() {
                   />
             </Link>
           </div>
+          
         </div>
-
-      </div>
-
+      ))}
+      </Slider>
     </div>
   )
 }

@@ -3,10 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Slider from "react-slick";
+
 import cardImages from "../app/card-images"
+
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+//o global.css precisa vir depois dos arquivos do Slider
+import '../app/globals.css'
 
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
@@ -55,6 +59,7 @@ export function BestSellers() {
 
   return (
     <div className="m-auto">
+      {/* <div className="hover-container"></div> */}
       <Slider {...settings}>
       {cardImages.map(card => (
         <div className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">

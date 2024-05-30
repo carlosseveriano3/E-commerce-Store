@@ -1,5 +1,6 @@
 import { BestSellers } from "@/components/BestSellers"
 import { ImageSlider } from "../components/ImageSlider"
+import './globals.css'
 
 export default function Home() {
 
@@ -11,7 +12,7 @@ export default function Home() {
         <div className="text-xl font-semibold">
             Livros mais vendidos
         </div>
-        <div className="">
+        <div className="relative">
             <BestSellers />
         </div>
       </div>

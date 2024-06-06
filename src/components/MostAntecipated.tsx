@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useRef } from "react"; 
 
 import cardImages from "../app/card-images"
 
@@ -16,8 +15,7 @@ import '../app/globals.css'
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
 
-export function BestSellers() {
-
+export function MostAntecipated() {
   let settings = {
     dots: false,
     infinite: true,
@@ -26,7 +24,7 @@ export function BestSellers() {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 5080,
     responsive: [
       {
         breakpoint: 1024,

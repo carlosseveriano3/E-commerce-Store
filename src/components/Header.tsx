@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
-
 import Logo from '../../public/book.png';
 import Menu from '../../public/assets/Menu.svg';
 import User from '../../public/assets/User.svg';

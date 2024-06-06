@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { StaticImageData } from "next/image"
 
 import banner1 from "../../public/banner-images/Banner_1.png"
@@ -46,6 +46,17 @@ export function ImageSlider() {
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex)
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      nextSlide();
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [currentIndex])
+
+
 
   return(
     <div className="overflow-hidden border-2 group relative">

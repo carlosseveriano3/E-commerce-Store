@@ -22,6 +22,22 @@ const config: Config = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+
+      '744px': '744px',
+
+      '581px': '581px',
+
+      '613px': '613px',
+
+      '718px': '718px',
+
+      '717px': '717px',
+
+      '604px': '604px',
+
+      '636px': '636px',
+
+      '751px': '751px'
     }
   },
   plugins: [],

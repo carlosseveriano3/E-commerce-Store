@@ -11,7 +11,7 @@ export default function Home() {
       <ImageSlider />
 
       <div className="mx-auto max-w-6xl my-3 px-5 flex flex-col gap-4">
-        {/* <div className="text-xl font-semibold">
+        <div className="text-xl font-semibold">
             Os livros mais vendidos
         </div>
         <div className="relative">
@@ -22,7 +22,7 @@ export default function Home() {
         </div>
         <div className="relative">
             <MostAntecipated />
-        </div> */}
+        </div>
         <div className="text-xl font-semibold">
             Novidades
         </div>

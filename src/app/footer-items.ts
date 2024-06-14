@@ -61,7 +61,7 @@ const footerItems: FooterItem[] = [
         email: "loremipsum@lorem.com"
       },
       {
-        info: "when an unknown printer took a galley of type and scrambled"
+        info: "alguma informação adicional"
       }
     ]
   },

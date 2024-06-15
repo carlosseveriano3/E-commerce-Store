@@ -9,8 +9,6 @@ import arrowFooter from "../../public/assets/Arrow-Down.svg"
 
 type ItemsProp = FooterItem
 
-// {item:props} : {item:ItemsProp}
-
 export default function FooterItems( {item:props} : {item:ItemsProp} ) {
   const [isOpen, setIsOpen] = useState(false)
 

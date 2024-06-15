@@ -1,17 +1,23 @@
 import Image from "next/image"
 
-import livro from "../../../public/card-images/1.jpg"
+import cardImages from "../../app/card-images"
 import Tabs from "@/components/Tabs"
 
-export default function BookView() {
+export default function BookView({
+  params: {bookView},
+}: {
+  params: {bookView: string}; 
+}) {
+  console.log(bookView)
+  
   return(
     <div className="border-2 border-red-600 w-[90%] mx-auto my-3">
 
       <div className="bg-white py-1 flex justify-center">
-        <Image 
-          src={livro}
+        {/* <Image 
+          src={}
           alt="Turma da Mônica"
-        />
+        /> */}
       </div>
 
       <div className="flex justify-center">

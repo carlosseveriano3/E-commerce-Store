@@ -1,7 +1,7 @@
-import { BestSellers } from "@/components/BestSellers"
 import { ImageSlider } from "../components/ImageSlider"
-import { MostAntecipated } from "@/components/MostAntecipated"
-import { News } from "@/components/News"
+import { BestSellers } from "@/components/carousels/BestSellers"
+import { MostAntecipated } from "@/components/carousels/MostAntecipated"
+import { News } from "@/components/carousels/News"
 import './globals.css'
 
 export default function Home() {

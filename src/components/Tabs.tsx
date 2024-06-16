@@ -1,10 +1,23 @@
 'use client'
 
-import cardImages from "@/app/card-images"
+import { CardImages } from "@/app/card-images"
 import { useState } from "react"
 
-export default function Tabs() {
+type BooksProps = CardImages
+
+export default function Tabs({ books:props }: { books:BooksProps }) {
   const [currentTab, setCurrentTab] = useState("1");
+
+  const tabs = [
+    {
+      id: "1",
+      tabTitle: "Descrição"
+    },
+    {
+      id: "2",
+      tabTitle: "Detalhes"
+    }
+  ]
 
   const handleTabClick = (event:React.MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(event.currentTarget.id)
@@ -13,20 +26,21 @@ export default function Tabs() {
   return(
     <div className="">
       <div className="">
-          <button
-            id={"1"}
+          {tabs.map((tab, i) =>
+            <button
+            key={i}
+            id={tab.id}
             disabled={currentTab === `${currentTab}`}
             onClick={handleTabClick}
           >
-            Descrição
+            {tab.tabTitle}
           </button>
+          )}
       </div>
       <div>
-        {cardImages.map((book, i) => (
           <div>
-            
+            {props.description} 
           </div>
-        ))}
       </div>
     </div>
   )

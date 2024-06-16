@@ -79,11 +79,13 @@ export function Header() {
 
         <div className="flex items-center gap-2 lg:ml-7">
           <div className="">
-            <Image
-            src={Logo}
-            alt="logo"
-            className="size-10"
-            />
+            <Link href="/">
+              <Image
+              src={Logo}
+              alt="logo"
+              className="size-10"
+              />
+            </Link>
           </div>
           <div className="">
             <span className="font-bold text-2xl text-nowrap antialiased">Don't Panic!</span>

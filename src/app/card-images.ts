@@ -30,7 +30,7 @@ const cardImages: CardImages[] = [
     price: '26.50',
     author: "Maurício de Sousa",
     lauchingData: "10/02/2006",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Mônica Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -41,7 +41,7 @@ const cardImages: CardImages[] = [
     price: '12.00',
     author: "Maurício de Sousa",
     lauchingData: "23/10/2009",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Cascão Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -52,7 +52,7 @@ const cardImages: CardImages[] = [
     price: '55.90',
     author: "Editora Saraiva",
     lauchingData: "20/04/2016",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Vade mecum saraiva Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -63,7 +63,7 @@ const cardImages: CardImages[] = [
     price: '32.50',
     author: "Carla Madeira",
     lauchingData: "01/02/2005",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Tudo é rio Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -74,7 +74,7 @@ const cardImages: CardImages[] = [
     price: '20.00',
     author: "Matt Haig",
     lauchingData: "",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "A biblioteca da meia-noite Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -85,7 +85,7 @@ const cardImages: CardImages[] = [
     price: '14.30',
     author: "Elichiro Oda",
     lauchingData: "06/05/1996",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "One piece Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -96,7 +96,7 @@ const cardImages: CardImages[] = [
     price: '35.60',
     author: "Colleen Hoover",
     lauchingData: "07/08/2018",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Colleen Hoover Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -107,7 +107,7 @@ const cardImages: CardImages[] = [
     price: '55.60',
     author: "Clarissa Pinkola Estés",
     lauchingData: "17/09/2018",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Mulheres que correm com os lobos Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -118,7 +118,7 @@ const cardImages: CardImages[] = [
     price: '8.90',
     author: "Gabriel Dearo, Manu Digilio",
     lauchingData: "18/09/2019",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "As aventuras de Mike Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -129,7 +129,7 @@ const cardImages: CardImages[] = [
     price: '21.50',
     author: "Jeff Kinney",
     lauchingData: "19/05/2008",
-    description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of",
+    description: "Diário de um banana Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },

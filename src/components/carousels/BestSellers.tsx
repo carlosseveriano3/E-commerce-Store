@@ -69,7 +69,7 @@ export function BestSellers() {
       {cardImages.map(card => (
         <div className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
           
-          <Link href={`/${card.id}`}>
+          <Link href={`/products/${card.id}`}>
             <Image 
               src={card.src}
               alt="image"
@@ -80,7 +80,7 @@ export function BestSellers() {
           </Link>
 
           <span className="text-sky-600 font-medium text-center block h-20 px-1">
-            <Link href={`/${card.id}`}>
+            <Link href={`/products/${card.id}`}>
               {card.name}
             </Link>
           </span>
@@ -90,7 +90,7 @@ export function BestSellers() {
           </span>
 
           <div className="flex flex-row">  
-            <Link href={`/${card.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 w-3/4 group">
+            <Link href={`/products/${card.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 w-3/4 group">
                 <Image 
                   src={CartBlack}
                   alt="cart-black"

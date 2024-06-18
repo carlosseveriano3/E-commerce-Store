@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import cardImages, { CardImages } from "../../app/card-images"
+import cardImages, { CardImages } from "../../../app/card-images"
 import Tabs from "@/components/Tabs"
 
 export default function BookView({

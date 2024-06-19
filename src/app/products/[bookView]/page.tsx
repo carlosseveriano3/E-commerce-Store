@@ -12,7 +12,7 @@ export default function BookView({
   
   return(
 
-    <div className="border-2 border-red-600 w-[90%] mx-auto my-3">
+    <div className="w-[90%] mx-auto my-3 md:grid md:grid-cols-2 md:grid-rows-2">
 
       <div className="bg-white py-1 flex justify-center">
         <Image 
@@ -21,12 +21,26 @@ export default function BookView({
         />
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center md:col-start-1 border-b-2">
         <Tabs books={books}/>
       </div>
 
-      <div className="flex justify-center">
-        Parte de compra
+      <div className="flex flex-col justify-center mt-2 md:col-start-2 space-y-1">
+        <div className="text-4xl">
+          {books.name}
+        </div>
+        <div className="font-light translate-y-1">
+          {books.author}
+        </div>
+        <div className="font-light">
+          {books.publishingCompany}
+        </div>
+        <div className="font-light translate-y-1">
+          <span>Data de lançamento:</span> {books.lauchingData}
+        </div>
+        <div className="font-semibold translate-y-2 text-2xl">
+          <span>R$</span> {books.price}
+        </div>
       </div>
 
     </div>

@@ -9,7 +9,9 @@ import { ShareIcon } from "@heroicons/react/24/outline";
 
 type BooksProps = CardImages
 
-export default function Tabs({ books:props }: { books:BooksProps }) {
+export default function Tabs(
+  { books:props}: { books:BooksProps }
+) {
   const [currentTab, setCurrentTab] = useState("1");
   const [FavIconClicked, setFavIconClicked] = useState()
 
@@ -59,7 +61,7 @@ export default function Tabs({ books:props }: { books:BooksProps }) {
       <div className="">
         <div className="">
           {currentTab === "1" ? (
-            <div className="mt-2 font-light">
+            <div className="mt-2 font-light border-b-2 pb-2">
               {props.description}
             </div>
           ) : (

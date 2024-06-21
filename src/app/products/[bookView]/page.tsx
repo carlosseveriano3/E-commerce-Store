@@ -9,6 +9,18 @@ export default function BookView({
   params: {bookView: string}; 
 }) {
   const books: CardImages = cardImages.find((book) => book.id === bookView)!;
+
+  function handleCurrentTab(currentTab: any) {
+    let menuClasses: string[] = [];
+
+    if (currentTab === "1") {
+      menuClasses = [
+        "border-2"
+      ]
+    }
+
+    return menuClasses
+  }
   
   return(
 
@@ -21,11 +33,11 @@ export default function BookView({
         />
       </div>
 
-      <div className="flex justify-center md:col-start-1 border-b-2">
+      <div className="flex justify-center md:col-start-1">
         <Tabs books={books}/>
       </div>
 
-      <div className="flex flex-col justify-center mt-2 md:col-start-2 space-y-1">
+      <div className="flex flex-col justify-center md:col-start-2 space-y-1">
         <div className="text-4xl">
           {books.name}
         </div>

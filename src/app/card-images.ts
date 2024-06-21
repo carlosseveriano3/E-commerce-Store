@@ -73,7 +73,7 @@ const cardImages: CardImages[] = [
     name: "A biblioteca da meia-noite",
     price: '20.00',
     author: "Matt Haig",
-    lauchingData: "",
+    lauchingData: "16/08/2001",
     description: "A biblioteca da meia-noite Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
     publishingCompany: "Bertrand Brasil",
     pages: 200

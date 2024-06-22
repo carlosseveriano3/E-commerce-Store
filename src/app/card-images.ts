@@ -30,7 +30,7 @@ const cardImages: CardImages[] = [
     price: '26.50',
     author: "Maurício de Sousa",
     lauchingData: "10/02/2006",
-    description: "Mônica Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Mônica Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -41,7 +41,7 @@ const cardImages: CardImages[] = [
     price: '12.00',
     author: "Maurício de Sousa",
     lauchingData: "23/10/2009",
-    description: "Cascão Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Cascão It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -52,7 +52,7 @@ const cardImages: CardImages[] = [
     price: '55.90',
     author: "Editora Saraiva",
     lauchingData: "20/04/2016",
-    description: "Vade mecum saraiva Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Vade mecum saraiva Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -63,7 +63,7 @@ const cardImages: CardImages[] = [
     price: '32.50',
     author: "Carla Madeira",
     lauchingData: "01/02/2005",
-    description: "Tudo é rio Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Tudo é rio Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -74,7 +74,7 @@ const cardImages: CardImages[] = [
     price: '20.00',
     author: "Matt Haig",
     lauchingData: "16/08/2001",
-    description: "A biblioteca da meia-noite Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "A biblioteca da meia-noite Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -85,7 +85,7 @@ const cardImages: CardImages[] = [
     price: '14.30',
     author: "Elichiro Oda",
     lauchingData: "06/05/1996",
-    description: "One piece Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "One piece Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -96,7 +96,7 @@ const cardImages: CardImages[] = [
     price: '35.60',
     author: "Colleen Hoover",
     lauchingData: "07/08/2018",
-    description: "Colleen Hoover Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Colleen Hoover Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -107,7 +107,7 @@ const cardImages: CardImages[] = [
     price: '55.60',
     author: "Clarissa Pinkola Estés",
     lauchingData: "17/09/2018",
-    description: "Mulheres que correm com os lobos Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Mulheres que correm com os lobos Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -118,7 +118,7 @@ const cardImages: CardImages[] = [
     price: '8.90',
     author: "Gabriel Dearo, Manu Digilio",
     lauchingData: "18/09/2019",
-    description: "As aventuras de Mike Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "As aventuras de Mike Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },
@@ -129,7 +129,7 @@ const cardImages: CardImages[] = [
     price: '21.50',
     author: "Jeff Kinney",
     lauchingData: "19/05/2008",
-    description: "Diário de um banana Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    description: "Diário de um banana Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     publishingCompany: "Bertrand Brasil",
     pages: 200
   },

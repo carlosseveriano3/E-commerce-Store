@@ -13,7 +13,7 @@ export default function Tabs(
   { books:props}: { books:BooksProps }
 ) {
   const [currentTab, setCurrentTab] = useState("1");
-  const [FavIconClicked, setFavIconClicked] = useState()
+  const [favIconClicked, setFavIconClicked] = useState(false)
 
   const tabs = [
     {
@@ -30,9 +30,9 @@ export default function Tabs(
     setCurrentTab(event.currentTarget.id)
   }
 
-  function changeFavoriteStyle() {
-    
-  }
+  // function changeFavoriteStyle() {
+  //   setFavIconClicked(true)
+  // }
 
   return(
     <div className="py-2 w-full">
@@ -48,20 +48,24 @@ export default function Tabs(
             {tab.tabTitle}
           </button>
           )}
-            <button 
-              className="absolute right-14 translate-y-1"
-              onClick={changeFavoriteStyle}
-              >
+            <button className="absolute right-14 translate-y-1">
               <ShareIcon className="size-7 text-white" />
             </button>
-            <button className="absolute right-2">
-              <HeartIcon className="size-9 text-white" />
+            <button 
+              className="absolute right-2"
+              onClick={() => setFavIconClicked(!favIconClicked)}
+            >
+              <HeartIcon 
+                className={`size-9 text-red`} 
+                fill={favIconClicked ? "red": "transparent"}
+                stroke={favIconClicked ? "red": "#e8eaed"} 
+              /> 
             </button>
       </div>
       <div className="">
         <div className="">
           {currentTab === "1" ? (
-            <div className="mt-2 font-light border-b-2 pb-2">
+            <div className="mt-2 font-light border-b-2 pb-2 md:border-b-0">
               {props.description}
             </div>
           ) : (

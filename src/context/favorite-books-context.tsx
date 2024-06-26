@@ -1,13 +1,26 @@
-import { createContext, useState } from "react";
+'use client'
 
-type IdBooks = string[]
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
-const FavoriteBooksContext = createContext<IdBooks | undefined>(undefined);
+export type IdBooks = {
+  id:string[]
+}
 
-export function FavoriteBooksWrapper({children} : {
+export type IdBooksContext = {
+  favoriteBooks: IdBooks,
+  setFavoriteBooks: Dispatch<SetStateAction<IdBooks>>
+}
+
+export const FavoriteBooksContext = createContext<Partial<IdBooksContext>>({});
+
+export default function FavoriteBooksProvider({children} : {
   children: React.ReactNode;
 }) {
-  let [favoriteBooks, setFavoriteBooks] = useState<IdBooks>()
+  const [favoriteBooks, setFavoriteBooks] = useState<IdBooks>({id:[]})
+
+  if (favoriteBooks === undefined) {
+    throw new Error('FavoriteBooksContext must be used with a FavoriteBooksProvider')
+  }
 
   return (
     <FavoriteBooksContext.Provider value={{favoriteBooks, setFavoriteBooks}}>

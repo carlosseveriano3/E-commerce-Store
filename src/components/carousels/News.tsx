@@ -65,7 +65,7 @@ export function News() {
       {/* <div className="hover-container"></div> */}
       <Slider {...settings}>
       {cardImages.map(card => (
-        <div className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
+        <div key={card.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
           
           <Link href={`/products/${card.id}`}>
             <Image 

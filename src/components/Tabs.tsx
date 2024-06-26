@@ -10,7 +10,7 @@ import { ShareIcon } from "@heroicons/react/24/outline";
 type BooksProps = CardImages
 
 export default function Tabs(
-  { books:props}: { books:BooksProps }
+  { books }: { books:BooksProps }
 ) {
   const [currentTab, setCurrentTab] = useState("1");
   const [favIconClicked, setFavIconClicked] = useState(false)
@@ -29,10 +29,6 @@ export default function Tabs(
   const handleTabClick = (event:React.MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(event.currentTarget.id)
   }
-
-  // function changeFavoriteStyle() {
-  //   setFavIconClicked(true)
-  // }
 
   return(
     <div className="py-2 w-full">
@@ -66,26 +62,26 @@ export default function Tabs(
         <div className="">
           {currentTab === "1" ? (
             <div className="mt-2 font-light border-b-2 pb-2 md:border-b-0">
-              {props.description}
+              {books.description}
             </div>
           ) : (
             <table className="w-full border-collapse border border-slate-500">
               <tbody>
                 <tr>
                   <td className="border border-white translate-x-3 font-light">Autor(a)</td>
-                  <td className="border border-white translate-x-3 font-light">{props.author}</td>
+                  <td className="border border-white translate-x-3 font-light">{books.author}</td>
                 </tr>
                 <tr>
                   <td className="border border-white translate-x-3 font-light">Editora</td>
-                  <td className="border border-white translate-x-3 font-light">{props.publishingCompany}</td>
+                  <td className="border border-white translate-x-3 font-light">{books.publishingCompany}</td>
                 </tr>
                 <tr>
                   <td className="border border-white translate-x-3 font-light">Páginas</td>
-                  <td className="border border-white translate-x-3 font-light">{props.pages}</td>
+                  <td className="border border-white translate-x-3 font-light">{books.pages}</td>
                 </tr>
                 <tr>
                   <td className="border border-white translate-x-3 font-light">Ano de edição</td>
-                  <td className="border border-white translate-x-3 font-light">{props.lauchingData}</td>
+                  <td className="border border-white translate-x-3 font-light">{books.lauchingData}</td>
                 </tr>
               </tbody>
             </table>

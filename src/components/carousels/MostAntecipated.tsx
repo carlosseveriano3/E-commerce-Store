@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useContext } from "react"; 
+import { FavoriteBooksContext } from "../../../src/context/favorite-books-context";
 
 import cardImages from "../../app/card-images"
 
@@ -16,6 +18,9 @@ import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 
 export function MostAntecipated() {
+
+  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
+
   let settings = {
     dots: false,
     infinite: true,
@@ -59,6 +64,10 @@ export function MostAntecipated() {
     ]
   };
 
+  function addToFavoriteBooks(id: string) {
+    setFavoriteBooks([...favoriteBooks, id])
+  }
+
   return (
     <div className="sm:mx-9 md:mx-12 lg:mx-12 xl:m-auto 
       744px:mx-16 581px:mx-4 613px:mx-1 717px:mx-10 604px:mx-3 636px:mx-1 751px:mx-10">
@@ -99,13 +108,17 @@ export function MostAntecipated() {
                 </span>
             </Link>
 
-            <Link href="/" className="bg-slate-300 text-xl font-medium text-black flex justify-center items-center w-1/4 group">
-                  <Image 
-                    src={FavoritesBlack}
-                    alt="FavoritesBlack"
-                    className="group-hover:size-[27px]"
-                  />
-            </Link>
+            <button 
+              className="bg-slate-300 text-xl font-medium text-black flex justify-center items-center w-1/4 group"
+              onClick={() => addToFavoriteBooks(card.id)}
+              >
+              
+              <Image 
+                src={FavoritesBlack}
+                alt="FavoritesBlack"
+                className="group-hover:size-[27px]"
+              />
+            </button>
           </div>
           
         </div>

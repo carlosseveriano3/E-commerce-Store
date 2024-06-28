@@ -2,23 +2,28 @@
 
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 
-export type IdBooks = {
-  id:string[]
-}
+export type IdBooks = string[]
 
 export type IdBooksContext = {
   favoriteBooks: IdBooks,
   setFavoriteBooks: Dispatch<SetStateAction<IdBooks>>
 }
 
-export const FavoriteBooksContext = createContext<Partial<IdBooksContext>>({});
+const defaultState = {
+  favoriteBooks: [],
+  setFavoriteBooks: (idBooks: IdBooks) => {}
+} as IdBooksContext
+
+export const FavoriteBooksContext = createContext(defaultState);
 
 export default function FavoriteBooksProvider({children} : {
   children: React.ReactNode;
 }) {
-  const [favoriteBooks, setFavoriteBooks] = useState<IdBooks>({id:[]})
+  const [favoriteBooks, setFavoriteBooks] = useState<IdBooks>([])
 
-  if (favoriteBooks === undefined) {
+  console.log(favoriteBooks)
+
+  if (favoriteBooks === undefined || setFavoriteBooks === undefined) {
     throw new Error('FavoriteBooksContext must be used with a FavoriteBooksProvider')
   }
 

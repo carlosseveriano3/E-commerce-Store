@@ -65,7 +65,7 @@ export function BestSellers() {
   };
 
   function addToFavoriteBooks(id: string) {
-    setFavoriteBooks({id:["asd"]})
+    setFavoriteBooks([...favoriteBooks, id])
   }
 
   return (

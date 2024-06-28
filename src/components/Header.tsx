@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext} from "react";
+import { SearchContext } from "@/context/search-context";
 
 import Logo from '../../public/book.png';
 import Menu from '../../public/assets/Menu.svg';
@@ -13,6 +14,12 @@ import Search from '../../public/assets/Search.svg';
 import Close from '../../public/assets/Close.svg';
 
 export function Header() {
+
+  const { search, setSearch } = useContext(SearchContext);
+
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearch(event.target.value)
+  }
 
   let [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
@@ -136,6 +143,8 @@ export function Header() {
               type="text" 
               autoComplete="off" 
               placeholder="O que você procura?"
+              value={search}
+              onChange={handleSearch}
               className="px-3 py-[4px] w-[360px] outline-none rounded-md border-none 
               placeholder-gray-400 ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2 lg:w-[500px]"
             />
@@ -152,7 +161,7 @@ export function Header() {
           
           <div className="-translate-x-[63px] md:-translate-x-14">
             <span>
-              <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
+              <Link href="/favorite-books" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
                 Minha estante de livros
               </Link>
             </span>

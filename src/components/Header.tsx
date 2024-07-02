@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useMemo, useContext} from "react";
 import { SearchContext } from "@/context/search-context";
+import { useRouter } from "next/navigation";
 
 import Logo from '../../public/book.png';
 import Menu from '../../public/assets/Menu.svg';
@@ -16,13 +17,22 @@ import Close from '../../public/assets/Close.svg';
 export function Header() {
 
   const { search, setSearch } = useContext(SearchContext);
+  const [windowWidth, setWindowWidth] = useState(0);
+  let [isOpen, setIsOpen] = useState(false);
+  const router = useRouter()
 
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+  function searchValue(event: React.ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value)
   }
 
-  let [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
+  // useEffect(() => {
+  //   router.push(`/search-books?search=${search}`)
+  // }, [search, router])
+
+  function enterSearch() {
+    console.log("foi")
+    router.push(`/search-books?search=${search}`)
+  }
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -144,7 +154,13 @@ export function Header() {
               autoComplete="off" 
               placeholder="O que você procura?"
               value={search}
-              onChange={handleSearch}
+              onChange={searchValue}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault()
+                  enterSearch()
+                }
+              }}
               className="px-3 py-[4px] w-[360px] outline-none rounded-md border-none 
               placeholder-gray-400 ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2 lg:w-[500px]"
             />

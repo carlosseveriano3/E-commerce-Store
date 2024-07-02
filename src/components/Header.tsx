@@ -119,7 +119,7 @@ export function Header() {
             <span className="hidden lg:block lg:-translate-x-1">entrar</span>
           </Link>
 
-          <Link href="/">
+          <Link href="/favorite-books">
             <Image 
               src={Favorites}
               alt="Favorites"
@@ -177,7 +177,7 @@ export function Header() {
           
           <div className="-translate-x-[63px] md:-translate-x-14">
             <span>
-              <Link href="/favorite-books" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
+              <Link href="/my-bookshelf" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
                 Minha estante de livros
               </Link>
             </span>

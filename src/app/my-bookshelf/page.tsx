@@ -1,48 +1,26 @@
 'use client'
 
-import Image from "next/image"
+import { useContext } from "react"
 import Link from "next/link"
-import { useContext, useEffect } from "react";
-import { SearchContext } from "@/context/search-context";
-import { useRouter } from "next/navigation";
-
-import cardImages from "../../app/card-images";
+import Image from "next/image"
+import { FavoriteBooksContext } from "../../../src/context/favorite-books-context"
+import cardImages from "../card-images"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 
-export default function SearchBooks({
-  searchParams
-} : {
-  searchParams: { [key: string]: string | undefined}
-}) {
-  // const searchLink = () => { 
-  //   if (typeof searchParams.search === 'string') {
-  //     throw new Error('URL is not of type string')
-  //   }
-  //    return searchParams
-  // }
+export default function MyBookshelf() {
+  const { favoriteBooks } = useContext(FavoriteBooksContext);
 
-  const router = useRouter()
-
-  const { search } = useContext(SearchContext)
-
-  const books = () => {
-    if (search === "") {
-      router.push("/")
-    } else {
-      return cardImages
-        .filter((book) => book.name.normalize('NFD').toLocaleLowerCase().replace(/[\u0300-\u036f]/g, "").includes(search.toLocaleLowerCase()))
-    }
-  }
+  const books = cardImages.filter((book) => favoriteBooks.includes(book.id));
 
   return(
     <div className="w-[87%] mx-auto my-3">
 
-      <span className="text-lg font-semibold">Pesquisando por - {search}</span>
+      <span className="text-lg font-semibold">Seus favoritos</span>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2">
-        {books()?.map(book => (
+        {books.map(book => (
         <div key={book.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
             
           <Link href={`/products/${book.id}`}>

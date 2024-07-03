@@ -4,24 +4,49 @@ import { useContext } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { FavoriteBooksContext } from "../../../src/context/favorite-books-context"
+import dynamic from "next/dynamic"
 import cardImages from "../card-images"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
+import { X } from "lucide-react"
 
-export default function FavoriteBooks() {
+const FavoriteBooks = () => {
   const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
 
   const books = cardImages.filter((book) => favoriteBooks.includes(book.id));
 
+  function removeFromFavorites(id: string) {
+
+    const newFavoriteBooks = favoriteBooks.filter((book) => book !== id);
+    setFavoriteBooks(newFavoriteBooks);
+
+    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
+  }
+
   return(
     <div className="w-[87%] mx-auto my-3">
 
-      <span className="text-lg font-semibold">Seus favoritos</span>
+      <span className="text-lg font-semibold">Meus favoritos</span>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2">
+      <div 
+        className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2" 
+        style={{
+            transform: 'scale(1)'
+         }}
+      >
         {books.map(book => (
-        <div key={book.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
+        <div key={book.id} 
+          className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden group relative">
+
+        <button 
+          className="fixed translate-x-[140px] -translate-y-3 bg-red-500 rounded-full z-10"
+          onClick={() => removeFromFavorites(book.id)}
+        >
+          <X className="size-7"
+            color="black"
+          />
+        </button>
             
           <Link href={`/products/${book.id}`}>
             <Image 
@@ -43,8 +68,8 @@ export default function FavoriteBooks() {
             R${book.price}
           </span>
 
-          <div className="flex flex-row">  
-            <Link href={`/products/${book.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 w-3/4 group">
+          <div className="">  
+            <Link href={`/products/${book.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 group">
               <Image 
                 src={CartBlack}
                 alt="cart-black"
@@ -54,18 +79,6 @@ export default function FavoriteBooks() {
                 Comprar
               </span>
             </Link>
-
-            <button 
-              className="bg-slate-300 text-xl font-medium text-black flex justify-center items-center w-1/4 group"
-              // onClick={() => addToFavoriteBooks(card.id)}
-              >
-              
-              <Image 
-                src={FavoritesBlack}
-                alt="FavoritesBlack"
-                className="group-hover:size-[27px]"
-              />
-            </button>
           </div>
             
           </div>
@@ -74,3 +87,5 @@ export default function FavoriteBooks() {
     </div>
   )
 }
+
+export default dynamic (() => Promise.resolve(FavoriteBooks), {ssr: false})

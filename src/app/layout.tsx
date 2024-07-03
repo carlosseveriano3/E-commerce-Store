@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import FavoriteBooksProvider from "@/context/favorite-books-context";
 import SearchProvider from "@/context/search-context";
+import MyBookshelfProvider from "@/context/bookshelf-context";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,9 +23,11 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-800 text-slate-100`}>
         <FavoriteBooksProvider>
           <SearchProvider>
-            <Header />
-              {children}
-            <Footer />
+            <MyBookshelfProvider>
+              <Header />
+                {children}
+              <Footer />
+            </MyBookshelfProvider>
           </SearchProvider>
         </FavoriteBooksProvider>
       </body>

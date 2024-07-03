@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, SetStateAction, createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState, useEffect } from "react";
 
 export type IdBooks = string[]
 
@@ -19,9 +19,17 @@ export const FavoriteBooksContext = createContext(defaultState);
 export default function FavoriteBooksProvider({children} : {
   children: React.ReactNode;
 }) {
-  const [favoriteBooks, setFavoriteBooks] = useState<IdBooks>([])
+  const [favoriteBooks, setFavoriteBooks] = useState<IdBooks>(() => {
+    if (typeof window !== "undefined") {
+      const notesOnStorage = localStorage.getItem('favoriteBooks')
 
-  console.log(favoriteBooks)
+      if (notesOnStorage) {
+        return JSON.parse(notesOnStorage)
+      }
+    }
+
+    return []
+  })
 
   if (favoriteBooks === undefined || setFavoriteBooks === undefined) {
     throw new Error('FavoriteBooksContext must be used with a FavoriteBooksProvider')

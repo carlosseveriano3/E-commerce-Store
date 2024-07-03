@@ -17,7 +17,7 @@ export default function MyBookshelf() {
   return(
     <div className="w-[87%] mx-auto my-3">
 
-      <span className="text-lg font-semibold">Seus favoritos</span>
+      <span className="text-lg font-semibold">Minha estante de livros</span>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2">
         {books.map(book => (

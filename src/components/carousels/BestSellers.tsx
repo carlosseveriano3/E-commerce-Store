@@ -65,11 +65,11 @@ export function BestSellers() {
   };
 
   function addToFavoriteBooks(id: string) {
-    const newFavoriteBooks = [...favoriteBooks, id]
+    const newFavoriteBooks = [...favoriteBooks, id];
 
-    setFavoriteBooks(newFavoriteBooks)
+    setFavoriteBooks(newFavoriteBooks);
 
-    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks))
+    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
   }
 
   return (

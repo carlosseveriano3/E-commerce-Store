@@ -25,9 +25,9 @@ export default function MyBookshelfProvider({children} : {
       if (notesOnStorage) {
         return JSON.parse(notesOnStorage)
       }
-    } else {
-      return []
     }
+    
+      return []
   })
 
   return (

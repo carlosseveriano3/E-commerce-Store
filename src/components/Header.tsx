@@ -170,9 +170,9 @@ export function Header() {
         <div className={`${getMenuClasses()} ${isOpen ? "": "hidden"} space-y-6 z-10 md:flex md:justify-center md:space-y-0 md:items-center md:translate-x-14`}>
           <div className="flex flex-col space-y-6 -translate-x-14 md:space-y-0 md:flex-row md:items-center">
             <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Livros</Link>
-            <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Livros de domínio público</Link>
-            <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Categorias</Link>
-            <Link href="/" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Contato</Link>
+            <Link href="/public-domain" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Livros de domínio público</Link>
+            <Link href="/categories" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Categorias</Link>
+            <Link href="/contact" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2">Contato</Link>
           </div>
           
           <div className="-translate-x-[63px] md:-translate-x-14">

@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import FavoriteBooksProvider from "@/context/favorite-books-context";
-import SearchProvider from "@/context/search-context";
-import MyBookshelfProvider from "@/context/bookshelf-context";
+import ErrorBoundary from "@/lib/ErrorBoundary";
+import AppProvider from "@/context/app-provider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,15 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-800 text-slate-100`}>
-        <FavoriteBooksProvider>
-          <SearchProvider>
-            <MyBookshelfProvider>
-              <Header />
-                {children}
-              <Footer />
-            </MyBookshelfProvider>
-          </SearchProvider>
-        </FavoriteBooksProvider>
+        <ErrorBoundary fallback='There was an error'>
+          <AppProvider>
+            <Header />
+              {children}
+            <Footer />
+          </AppProvider>    
+        </ErrorBoundary>
       </body>
     </html>
   );

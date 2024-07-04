@@ -1,20 +1,35 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link";
+import { MyBookshelfContext } from "@/context/bookshelf-context";
+import { useContext } from "react";
+import dynamic from "next/dynamic";
 
 import cardImages, { CardImages } from "../../../app/card-images"
 import Tabs from "@/components/Tabs"
 import CartBlack from '../../../../public/assets/Cart-Black.svg';
 
-export default function BookView({
+const BookView = ({
   params: {bookView},
 }: {
   params: {bookView: string}; 
-}) {
+}) => {
+  const { bookshelf, setBookshelf } = useContext(MyBookshelfContext);
+  
   const books: CardImages = cardImages.find((book) => book.id === bookView)!;
+
+  function addToBookshelf(id: string) {
+    const newBookshelf = [...bookshelf, id];
+
+    setBookshelf(newBookshelf);
+
+    localStorage.setItem('bookshelf', JSON.stringify(newBookshelf));
+  }
   
   return(
 
-    <div className="w-[90%] md:w-10/12 lg:w-7/12 mx-auto my-3 md:grid md:grid-cols-2 lg:translate-x-7">
+    <div className="min-h-screen w-[90%] md:w-10/12 lg:w-7/12 mx-auto my-3 md:grid md:grid-cols-2 lg:translate-x-7">
       <div className="">
         <div className="bg-white md:my-auto py-1 flex justify-center">
           <Image 
@@ -57,14 +72,19 @@ export default function BookView({
             </span>
           </Link>
 
-          <Link href={`/`} className="bg-amber-400 rounded-md h-10 flex items-center justify-center gap-1 w-4/4 group">
+          <button 
+            className="bg-amber-400 rounded-md h-10 flex items-center justify-center gap-1 w-[100%] group"
+            onClick={() => addToBookshelf(books.id)}  
+          >
             <span className="text-lg font-medium text-black group-hover:text-[19px]">
               Comprar
             </span>
-          </Link>
+          </button>
         </div>
 
       </div>
     </div>
   )
 }
+
+export default dynamic (() => Promise.resolve(BookView), {ssr: false})

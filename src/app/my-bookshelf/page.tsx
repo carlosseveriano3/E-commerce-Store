@@ -3,16 +3,17 @@
 import { useContext } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { FavoriteBooksContext } from "../../../src/context/favorite-books-context"
+import { MyBookshelfContext } from "@/context/bookshelf-context"
+import dynamic from "next/dynamic"
 import cardImages from "../card-images"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 
-export default function MyBookshelf() {
-  const { favoriteBooks } = useContext(FavoriteBooksContext);
+const MyBookshelf = () => {
+  const { bookshelf } = useContext(MyBookshelfContext);
 
-  const books = cardImages.filter((book) => favoriteBooks.includes(book.id));
+  const books = cardImages.filter((book) => bookshelf.includes(book.id));
 
   return(
     <div className="w-[87%] mx-auto my-3">
@@ -38,35 +39,6 @@ export default function MyBookshelf() {
               {book.name}
             </Link>
           </span>
-
-          <span className="text-black text-xl font-bold text-center block">
-            R${book.price}
-          </span>
-
-          <div className="flex flex-row">  
-            <Link href={`/products/${book.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 w-3/4 group">
-              <Image 
-                src={CartBlack}
-                alt="cart-black"
-                className="group-hover:size-[25px]"
-              />
-              <span className="text-lg font-medium text-black group-hover:text-[19px]">
-                Comprar
-              </span>
-            </Link>
-
-            <button 
-              className="bg-slate-300 text-xl font-medium text-black flex justify-center items-center w-1/4 group"
-              // onClick={() => addToFavoriteBooks(card.id)}
-              >
-              
-              <Image 
-                src={FavoritesBlack}
-                alt="FavoritesBlack"
-                className="group-hover:size-[27px]"
-              />
-            </button>
-          </div>
             
           </div>
         ))}
@@ -74,3 +46,5 @@ export default function MyBookshelf() {
     </div>
   )
 }
+
+export default dynamic (() => Promise.resolve(MyBookshelf), {ssr: false})

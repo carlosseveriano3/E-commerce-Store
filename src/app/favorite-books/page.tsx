@@ -8,7 +8,6 @@ import dynamic from "next/dynamic"
 import cardImages from "../card-images"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
-import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 import { X } from "lucide-react"
 
 const FavoriteBooks = () => {

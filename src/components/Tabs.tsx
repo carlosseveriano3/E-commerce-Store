@@ -1,7 +1,8 @@
 'use client'
 
 import { CardImages } from "@/app/card-images";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { FavoriteBooksContext } from "@/context/favorite-books-context";
 import Image from "next/image";
 
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -14,6 +15,16 @@ export default function Tabs(
 ) {
   const [currentTab, setCurrentTab] = useState("1");
   const [favIconClicked, setFavIconClicked] = useState(false)
+
+  const { favoriteBooks ,setFavoriteBooks } = useContext(FavoriteBooksContext);
+
+  function addToFavoriteBooks(id:string) {
+    const newFavoriteBooks = [...favoriteBooks, id];
+
+    setFavoriteBooks(newFavoriteBooks);
+
+    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks))
+  }
 
   const tabs = [
     {
@@ -47,6 +58,7 @@ export default function Tabs(
             <button className="absolute right-14 translate-y-1">
               <ShareIcon className="size-7 text-white" />
             </button>
+            
             <button 
               className="absolute right-2"
               onClick={() => setFavIconClicked(!favIconClicked)}
@@ -55,6 +67,7 @@ export default function Tabs(
                 className={`size-9 text-red`} 
                 fill={favIconClicked ? "red": "transparent"}
                 stroke={favIconClicked ? "red": "#e8eaed"} 
+                onClick={() => addToFavoriteBooks(books.id)}
               /> 
             </button>
       </div>

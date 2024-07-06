@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react"; 
 import { FavoriteBooksContext } from "../../../src/context/favorite-books-context";
+import { getProductsCategory } from "@/lib/products";
 
 import cardImages from "../../app/card-images"
 
@@ -18,8 +19,6 @@ import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 
 export function BestSellers() {
-
-  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
 
   let settings = {
     dots: false,
@@ -64,6 +63,19 @@ export function BestSellers() {
     ]
   };
 
+  const [ products, setProducts ] = useState([])
+  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const result = await getProductsCategory("smartphones");
+      setProducts(result);
+    }
+    getProducts()
+  }, [])
+
+  console.log(products)
+
   function addToFavoriteBooks(id: string) {
     const newFavoriteBooks = [...favoriteBooks, id];
 
@@ -77,12 +89,12 @@ export function BestSellers() {
       744px:mx-16 581px:mx-4 613px:mx-1 717px:mx-10 604px:mx-3 636px:mx-1 751px:mx-10">
       {/* <div className="hover-container"></div> */}
       <Slider {...settings}>
-      {cardImages.map(card => (
+      {products?.map(card => (
         <div key={card.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
           
           <Link href={`/products/${card.id}`}>
             <Image 
-              src={card.src}
+              src={card.}
               alt="image"
               width={300}
               height={300}

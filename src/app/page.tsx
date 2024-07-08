@@ -1,8 +1,7 @@
+import { Suspense } from "react"
 import { ImageSlider } from "../components/ImageSlider"
-import { BestSellers } from "@/components/carousels/BestSellers"
-import { MostAntecipated } from "@/components/carousels/MostAntecipated"
-import { News } from "@/components/carousels/News"
-import './globals.css'
+import  Carousel  from "@/components/Carousel"
+// import Loading from "./loading"
 
 export default function Home() {
 
@@ -15,19 +14,19 @@ export default function Home() {
             Os livros mais vendidos
         </div>
         <div className="relative">
-            <BestSellers />
+            <Carousel category={"mobile-accessories"}/>
         </div>
         <div className="text-xl font-semibold">
             Os livros mais aguardados
         </div>
         <div className="relative">
-            <MostAntecipated />
+          <Carousel category={"groceries"}/>
         </div>
         <div className="text-xl font-semibold">
             Novidades
         </div>
         <div className="relative">
-            <News />
+        <Carousel category={"smartphones"}/>
         </div>
       </div>
       

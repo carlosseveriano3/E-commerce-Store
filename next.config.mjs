@@ -2,7 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      {hostname: "leitura.com.br"}
+      {hostname: "leitura.com.br"},
+      {hostname: "cdn.dummyjson.com"}
     ]
   }
 };

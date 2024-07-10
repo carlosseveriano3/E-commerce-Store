@@ -3,6 +3,7 @@
 import { CardImages } from "@/app/card-images";
 import { useContext, useState } from "react";
 import { FavoriteBooksContext } from "@/context/favorite-books-context";
+import { Products } from "@/lib/types";
 import Image from "next/image";
 
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -11,7 +12,7 @@ import { ShareIcon } from "@heroicons/react/24/outline";
 type BooksProps = CardImages
 
 export default function Tabs(
-  { books }: { books:BooksProps }
+  { product }: { product: Products}
 ) {
   const [currentTab, setCurrentTab] = useState("1");
   const [favIconClicked, setFavIconClicked] = useState(false)
@@ -67,7 +68,7 @@ export default function Tabs(
                 className={`size-9 text-red`} 
                 fill={favIconClicked ? "red": "transparent"}
                 stroke={favIconClicked ? "red": "#e8eaed"} 
-                onClick={() => addToFavoriteBooks(books.id)}
+                onClick={() => addToFavoriteBooks(product.id)}
               /> 
             </button>
       </div>
@@ -75,26 +76,26 @@ export default function Tabs(
         <div className="">
           {currentTab === "1" ? (
             <div className="mt-2 font-light border-b-2 pb-2 md:border-b-0">
-              {books.description}
+              {product.description}
             </div>
           ) : (
             <table className="w-full border-collapse border border-slate-500">
               <tbody>
                 <tr>
-                  <td className="border border-white translate-x-3 font-light">Autor(a)</td>
-                  <td className="border border-white translate-x-3 font-light">{books.author}</td>
+                  <td className="border border-white translate-x-3 font-light">Avaliação</td>
+                  <td className="border border-white translate-x-3 font-light">{product.rating}</td>
                 </tr>
                 <tr>
-                  <td className="border border-white translate-x-3 font-light">Editora</td>
-                  <td className="border border-white translate-x-3 font-light">{books.publishingCompany}</td>
+                  <td className="border border-white translate-x-3 font-light">Marca</td>
+                  <td className="border border-white translate-x-3 font-light">{product.brand}</td>
                 </tr>
                 <tr>
-                  <td className="border border-white translate-x-3 font-light">Páginas</td>
-                  <td className="border border-white translate-x-3 font-light">{books.pages}</td>
+                  <td className="border border-white translate-x-3 font-light">Categoria</td>
+                  <td className="border border-white translate-x-3 font-light">{product.category}</td>
                 </tr>
                 <tr>
-                  <td className="border border-white translate-x-3 font-light">Ano de edição</td>
-                  <td className="border border-white translate-x-3 font-light">{books.lauchingData}</td>
+                  <td className="border border-white translate-x-3 font-light">Peso</td>
+                  <td className="border border-white translate-x-3 font-light">{product.weight}</td>
                 </tr>
               </tbody>
             </table>

@@ -1,23 +1,20 @@
 "use client"
 
 import React, { Suspense, lazy, useState } from "react";
-import { useContext } from "react"; 
 import dynamic from "next/dynamic";
-import { FavoriteBooksContext } from "../../src/context/favorite-books-context";
-import { getProductsCategory } from "@/lib/products";
-import { Products } from "@/lib/types";
 import CarouselItem from "./CarouselItems";
 import LoadingCarousel from "./LoadingCarousel";
 // import Loading from "../app/loading";
 
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //o global.css precisa vir depois dos arquivos do Slider
 
 import '../app/globals.css'
 
-const Carousel = ({category} : {category: string}) => {
+export default function Carousel ({category} : {category: string}) {
+
+// export default function Carousel ({category} : {category: string}) {
 
   let settings = {
     dots: false,
@@ -67,14 +64,14 @@ const Carousel = ({category} : {category: string}) => {
   return (
     <div className="sm:mx-9 md:mx-12 lg:mx-12 
       744px:mx-16 581px:mx-4 613px:mx-1 717px:mx-10 604px:mx-3 636px:mx-1 751px:mx-10">
-        <Suspense key={Math.random()} fallback={<LoadingCarousel/>}>
+        {/* <Suspense key={Math.random()} fallback={<LoadingCarousel/>}> */}
           <CarouselItem 
             key={Math.random()}
             category={category}
           />
-        </Suspense>
+        {/* </Suspense> */}
     </div>
   )
 }
 
-export default dynamic (() => Promise.resolve(Carousel), {ssr: false})
+// export default dynamic (() => Promise.resolve(Carousel), {ssr: false})

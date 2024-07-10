@@ -1,9 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Suspense, useContext, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Products } from "@/lib/types"
 import { FavoriteBooksContext } from "@/context/favorite-books-context";
 import { getProductsCategory } from "@/lib/products";
+import { getProductById } from "@/lib/products";
+import LoadingCarousel from "./LoadingCarousel";
 
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
@@ -14,9 +16,10 @@ import "slick-carousel/slick/slick-theme.css";
 //o global.css precisa vir depois dos arquivos do Slider
 import '../app/globals.css'
 
-export default async function CarouselItem({category}: {category: string}) {
-
-  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);  
+export default function CarouselItem({category}: {category: string}) {
+  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [allProducts, setAllProducts ] = useState<Products[]>([])
 
   let settings = {
     dots: false,
@@ -61,9 +64,23 @@ export default async function CarouselItem({category}: {category: string}) {
     ]
   };
 
-  const [ allProducts, setAllProducts ] = useState<Products[]>([])
+  useEffect(() => {
+    const fetchProducts = async () => {
 
-  const { products, error } = await getProductsCategory(category)
+      setIsLoading(true);
+
+      const { products, error } = await getProductsCategory(category);
+      if (!products || error) {
+        console.log(error)
+        return
+      }
+      setAllProducts(products)
+
+      setIsLoading(false)
+    }
+
+    fetchProducts();
+  }, [])
 
   function addToFavoriteBooks(id: string) {
     const newFavoriteBooks = [...favoriteBooks, id];
@@ -75,8 +92,9 @@ export default async function CarouselItem({category}: {category: string}) {
 
   return(
     <>
+    {isLoading && <LoadingCarousel />}
     <Slider {...settings}>
-      {products?.map(product => (
+      {allProducts?.map(product => (
         
           <div key={product.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
                 

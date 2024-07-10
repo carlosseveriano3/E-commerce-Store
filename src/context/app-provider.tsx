@@ -1,7 +1,7 @@
 'use client'
 
-import MyBookshelfProvider from "./bookshelf-context";
-import FavoriteBooksProvider from "./favorite-books-context";
+import MyProductsProvider from "./my-products-context";
+import FavoriteProductsProvider from "./favorite-products-context";
 import SearchProvider from "./search-context";
 
 export default function AppProvider ({
@@ -11,13 +11,13 @@ export default function AppProvider ({
 }) {
   return (
     <>
-      <FavoriteBooksProvider>
+      <FavoriteProductsProvider>
         <SearchProvider>
-          <MyBookshelfProvider>
+          <MyProductsProvider>
             {children}
-          </MyBookshelfProvider>
+          </MyProductsProvider>
         </SearchProvider>
-      </FavoriteBooksProvider>
+      </FavoriteProductsProvider>
     </>
   )
 }

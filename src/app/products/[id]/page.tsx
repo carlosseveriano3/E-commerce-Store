@@ -2,11 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link";
-import { MyBookshelfContext } from "@/context/bookshelf-context";
+import { MyProductsContext } from "@/context/my-products-context";
 import { useContext, useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import { Products } from "@/lib/types";
 import { getProductById } from "@/lib/products";
+import LoadingSingleProduct from "@/components/loadings/loadingSingleProduct";
 
 import Tabs from "@/components/Tabs"
 import CartBlack from '../../../../public/assets/Cart-Black.svg';
@@ -16,15 +16,16 @@ export default function Product ({
 }: {
   params: {id: string}; 
 }) {
-  // const { bookshelf, setBookshelf } = useContext(MyBookshelfContext);
-  const [ isLoading, setIsLoading ] = useState(false);
-  const [ error, setError ] = useState()
+  const { myProducts, setMyProducts } = useContext(MyProductsContext);
   const [ singleProduct, setSingleProduct ] = useState<Products>()
+  const [ isLoading, setIsLoading ] = useState(false);
 
   console.log(singleProduct)
 
   useEffect(() => {
     const fetchProduct = async () => {
+
+      setIsLoading(true)
 
       const { product, error } = await getProductById(id);
       if (!product || error) {
@@ -32,25 +33,26 @@ export default function Product ({
         return
       }
       setSingleProduct(product)
+
+      setIsLoading(false)
     }
 
     fetchProduct();
   }, [])
 
-  // function addToBookshelf(id: string) {
-  //   const newBookshelf = [...bookshelf, id];
+  function addToMyProducts(id: string) {
+    const newProducts = [...myProducts, id];
 
-  //   setBookshelf(newBookshelf);
+    setMyProducts(newProducts);
 
-  //   localStorage.setItem('bookshelf', JSON.stringify(newBookshelf));
-  // }
-
-  if (!singleProduct) {
-    return
+    localStorage.setItem('myProducts', JSON.stringify(newProducts));
   }
   
   return(
 
+    <>
+    {isLoading && <LoadingSingleProduct />}
+    {singleProduct && (
     <div className="min-h-screen w-[90%] md:w-10/12 lg:w-7/12 mx-auto my-3 md:grid md:grid-cols-2 lg:translate-x-7">
       <div className="">
         <div className="bg-white md:my-auto py-1 flex justify-center">
@@ -72,10 +74,10 @@ export default function Product ({
           {singleProduct.title}
         </div>
         <div className="font-light">
-          {singleProduct.brand}
+          <span>Marca: {singleProduct.brand}</span>
         </div>
         <div className="font-light md:-translate-y-2">
-          {singleProduct.category}
+          <span>Categoria: {singleProduct.category}</span>
         </div>
         <div className="font-light">
           <span>Avaliação: {singleProduct.rating}</span>
@@ -98,7 +100,7 @@ export default function Product ({
 
           <button 
             className="bg-amber-400 rounded-md h-10 flex items-center justify-center gap-1 w-[100%] group"
-            // onClick={() => addToBookshelf(singleProduct?.id)}  
+            onClick={() => addToMyProducts(singleProduct.id)}  
           >
             <span className="text-lg font-medium text-black group-hover:text-[19px]">
               Comprar
@@ -108,6 +110,8 @@ export default function Product ({
 
       </div>
     </div>
+    )}
+    </>
   )
 }
 

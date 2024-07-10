@@ -1,9 +1,6 @@
 "use client"
 
-import React, { Suspense, lazy, useState } from "react";
-import dynamic from "next/dynamic";
 import CarouselItem from "./CarouselItems";
-import LoadingCarousel from "./LoadingCarousel";
 // import Loading from "../app/loading";
 
 import "slick-carousel/slick/slick.css";

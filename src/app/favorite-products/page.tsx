@@ -1,23 +1,34 @@
 'use client'
 
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { FavoriteBooksContext } from "../../../src/context/favorite-books-context"
+import { FavoriteProductsContext } from "@/context/favorite-products-context"
 import dynamic from "next/dynamic"
 import cardImages from "../card-images"
+import { getProductsById } from "@/lib/products"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import { X } from "lucide-react"
 
-const FavoriteBooks = () => {
-  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
+const FavoriteProducts = () => {
+  const { favoriteProducts, setFavoriteProducts } = useContext(FavoriteProductsContext);
+  const [ isLoading, setIsLoading ] = useState(false)
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+
+      setIsLoading(true)
+
+      const { product, error } = await getProductsById(favoriteProducts)
+    }
+  }, [])
 
   const books = cardImages.filter((book) => favoriteBooks.includes(book.id));
 
   function removeFromFavorites(id: string) {
 
-    const newFavoriteBooks = favoriteBooks.filter((book) => book !== id);
+    const newFavoriteBooks = favoriteProducts.filter((product) => product !== id);
     setFavoriteBooks(newFavoriteBooks);
 
     localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
@@ -87,4 +98,4 @@ const FavoriteBooks = () => {
   )
 }
 
-export default dynamic (() => Promise.resolve(FavoriteBooks), {ssr: false})
+export default dynamic (() => Promise.resolve(FavoriteProducts), {ssr: false})

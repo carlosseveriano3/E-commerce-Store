@@ -1,11 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Products } from "@/lib/types"
-import { FavoriteBooksContext } from "@/context/favorite-books-context";
+import { FavoriteProductsContext } from "@/context/favorite-products-context";
 import { getProductsCategory } from "@/lib/products";
-import { getProductById } from "@/lib/products";
-import LoadingCarousel from "./LoadingCarousel";
+import LoadingCarousel from "./loadings/LoadingCarousel";
 
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
@@ -17,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import '../app/globals.css'
 
 export default function CarouselItem({category}: {category: string}) {
-  const { favoriteBooks, setFavoriteBooks } = useContext(FavoriteBooksContext);
+  const { favoriteProducts, setFavoriteProducts } = useContext(FavoriteProductsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [allProducts, setAllProducts ] = useState<Products[]>([])
 
@@ -69,23 +68,23 @@ export default function CarouselItem({category}: {category: string}) {
 
       setIsLoading(true);
 
-      const { products, error } = await getProductsCategory(category);
-      if (!products || error) {
-        console.log(error)
-        return
-      }
-      setAllProducts(products)
+        const { products, error } = await getProductsCategory(category);
+        if (!products || error) {
+          console.log(error)
+          return
+        }
+        setAllProducts(products)
 
-      setIsLoading(false)
-    }
+        setIsLoading(false)
+      }
 
     fetchProducts();
   }, [])
 
   function addToFavoriteBooks(id: string) {
-    const newFavoriteBooks = [...favoriteBooks, id];
+    const newFavoriteBooks = [...favoriteProducts, id];
 
-    setFavoriteBooks(newFavoriteBooks);
+    setFavoriteProducts(newFavoriteBooks);
 
     localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
   }

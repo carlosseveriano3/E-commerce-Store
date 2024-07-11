@@ -9,3 +9,5 @@ export type Products = {
   category: string,
   weight: number
 }
+
+// export type FavoriteProducts = Products[{}]

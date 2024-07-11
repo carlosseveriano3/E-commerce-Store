@@ -25,16 +25,16 @@ export default function Product ({
   useEffect(() => {
     const fetchProduct = async () => {
 
-      setIsLoading(true)
+      setIsLoading(true);
 
       const { product, error } = await getProductById(id);
       if (!product || error) {
-        console.log(error)
+        console.log(error);
         return
       }
-      setSingleProduct(product)
+      setSingleProduct(product);
 
-      setIsLoading(false)
+      setIsLoading(false);
     }
 
     fetchProduct();

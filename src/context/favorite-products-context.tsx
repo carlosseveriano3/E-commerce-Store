@@ -5,13 +5,13 @@ import { Dispatch, SetStateAction, createContext, useState, useEffect } from "re
 export type FavoriteProducts = string[]
 
 export type FavoriteProductsContext = {
-  favoriteProducts: FavoriteProducts,
-  setFavoriteProducts: Dispatch<SetStateAction<FavoriteProducts>>
+  favoriteProductsId: FavoriteProducts,
+  setFavoriteProductsId: Dispatch<SetStateAction<FavoriteProducts>>
 }
 
 const defaultState = {
-  favoriteProducts: [],
-  setFavoriteProducts: (favoriteProducts: FavoriteProducts) => {}
+  favoriteProductsId: [],
+  setFavoriteProductsId: (favoriteProducts: FavoriteProducts) => {}
 } as FavoriteProductsContext
 
 export const FavoriteProductsContext = createContext(defaultState);
@@ -19,7 +19,7 @@ export const FavoriteProductsContext = createContext(defaultState);
 export default function FavoriteProductsProvider({children} : {
   children: React.ReactNode;
 }) {
-  const [favoriteProducts, setFavoriteProducts] = useState<FavoriteProducts>(() => {
+  const [favoriteProductsId, setFavoriteProductsId] = useState<FavoriteProducts>(() => {
     if (typeof window !== "undefined") {
       const notesOnStorage = localStorage.getItem('favoriteProducts')
 
@@ -31,12 +31,12 @@ export default function FavoriteProductsProvider({children} : {
     return []
   })
 
-  if (favoriteProducts === undefined || setFavoriteProducts === undefined) {
+  if (favoriteProductsId === undefined || setFavoriteProductsId === undefined) {
     throw new Error('FavoriteBooksContext must be used with a FavoriteBooksProvider')
   }
 
   return (
-    <FavoriteProductsContext.Provider value={{favoriteProducts, setFavoriteProducts}}>
+    <FavoriteProductsContext.Provider value={{favoriteProductsId, setFavoriteProductsId}}>
       {children}
     </FavoriteProductsContext.Provider>
   )

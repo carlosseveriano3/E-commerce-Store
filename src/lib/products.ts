@@ -49,10 +49,10 @@ export async function getProductById(
   }
 }
 
-export async function getProductsById(
+export async function getFavoriteProductsById(
   id: string
 ): Promise<{
-  product: Products[] | null
+  product: Products | null
   error: string | null
 }> {
   try {
@@ -65,9 +65,9 @@ export async function getProductsById(
       throw new Error('Failed to fetch data')
     }
 
-    console.log(data)
+    // console.log(data)
 
-    return { product: data.product, error: null }
+    return { product: data, error: null }
   } catch (error: any) {
     return { product: null, error: error.message || 'Failed to fetch product' }
   }

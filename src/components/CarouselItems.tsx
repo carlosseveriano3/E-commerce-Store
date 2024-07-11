@@ -16,9 +16,11 @@ import "slick-carousel/slick/slick-theme.css";
 import '../app/globals.css'
 
 export default function CarouselItem({category}: {category: string}) {
-  const { favoriteProducts, setFavoriteProducts } = useContext(FavoriteProductsContext);
+  const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [allProducts, setAllProducts ] = useState<Products[]>([])
+
+  console.log(allProducts)
 
   let settings = {
     dots: false,
@@ -82,11 +84,11 @@ export default function CarouselItem({category}: {category: string}) {
   }, [])
 
   function addToFavoriteBooks(id: string) {
-    const newFavoriteBooks = [...favoriteProducts, id];
+    const newFavoriteProduct = [...favoriteProductsId, id];
 
-    setFavoriteProducts(newFavoriteBooks);
+    setFavoriteProductsId(newFavoriteProduct);
 
-    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
+    localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProduct));
   }
 
   return(

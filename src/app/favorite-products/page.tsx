@@ -1,35 +1,57 @@
 'use client'
 
-import { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { FavoriteProductsContext } from "@/context/favorite-products-context"
 import dynamic from "next/dynamic"
-import cardImages from "../card-images"
-import { getProductsById } from "@/lib/products"
+import { useContext, useEffect, useState } from "react"
+import { FavoriteProductsContext } from "@/context/favorite-products-context"
+import { getFavoriteProductsById } from "@/lib/products"
+import { Products } from "@/lib/types"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import { X } from "lucide-react"
 
-const FavoriteProducts = () => {
-  const { favoriteProducts, setFavoriteProducts } = useContext(FavoriteProductsContext);
+// const FavoriteProducts = () => {
+export default function FavoriteProducts() {
+
+  const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
+  const [ favoriteProducts, setFavoriteProducts ] = useState<Products[] | {}>()
   const [ isLoading, setIsLoading ] = useState(false)
+
+  console.log(favoriteProducts)
 
   useEffect(() => {
     const fetchProduct = async () => {
 
-      setIsLoading(true)
+      setIsLoading(true);
 
-      const { product, error } = await getProductsById(favoriteProducts)
+      if (favoriteProductsId) {
+        const res = await Promise.all (
+          favoriteProductsId.map((id) => getFavoriteProductsById(id)) 
+        )
+        if (!res) {
+          throw new Error('Failed in fetch products!');
+        }
+        setFavoriteProducts(res.map((res) => res.product))
+      }
+
+      
+      // console.log(product);
+      console.log(favoriteProductsId)
+      // setFavoriteProductsId(product);
+
+      setIsLoading(false);
     }
+
+    fetchProduct()
   }, [])
 
-  const books = cardImages.filter((book) => favoriteBooks.includes(book.id));
+  // const books = cardImages.filter((book) => favoriteProductsId.includes(book.id));
 
   function removeFromFavorites(id: string) {
 
-    const newFavoriteBooks = favoriteProducts.filter((product) => product !== id);
-    setFavoriteBooks(newFavoriteBooks);
+    const newFavoriteBooks = favoriteProductsId.filter((product) => product !== id);
+    setFavoriteProductsId(newFavoriteBooks);
 
     localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
   }
@@ -45,22 +67,23 @@ const FavoriteProducts = () => {
             transform: 'scale(1)'
          }}
       >
-        {books.map(book => (
-        <div key={book.id} 
+        
+        {favoriteProducts?.map(products => (
+        <div key={products.id} 
           className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden group relative">
 
         <button 
           className="fixed translate-x-[140px] -translate-y-3 bg-red-500 rounded-full z-10"
-          onClick={() => removeFromFavorites(book.id)}
+          onClick={() => removeFromFavorites(products.id)}
         >
           <X className="size-7"
             color="black"
           />
         </button>
             
-          <Link href={`/products/${book.id}`}>
+          <Link href={`/products/${products.id}`}>
             <Image 
-              src={book.src}
+              src={products.thumbnail}
               alt="image"
               width={300}
               height={300}
@@ -69,17 +92,17 @@ const FavoriteProducts = () => {
           </Link>
 
           <span className="text-sky-600 font-medium text-center block h-20 px-1">
-            <Link href={`/products/${book.id}`}>
-              {book.name}
+            <Link href={`/products/${products.id}`}>
+              {products.title}
             </Link>
           </span>
 
           <span className="text-black text-xl font-bold text-center block">
-            R${book.price}
+            R${products.price}
           </span>
 
           <div className="">  
-            <Link href={`/products/${book.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 group">
+            <Link href={`/products/${products.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 group">
               <Image 
                 src={CartBlack}
                 alt="cart-black"
@@ -98,4 +121,4 @@ const FavoriteProducts = () => {
   )
 }
 
-export default dynamic (() => Promise.resolve(FavoriteProducts), {ssr: false})
+// export default dynamic (() => Promise.resolve(FavoriteProducts), {ssr: false})

@@ -18,4 +18,4 @@ Dependencies:
 <br />
 <img src="https://github.com/user-attachments/assets/9ce74bbf-e656-49a7-a32e-e85578730b50" width="530px" height="270px">
 <br />
-<img src="https://github.com/user-attachments/assets/edd5cf3e-cc43-450c-b343-f65aaea93b89" width="530px" height="260px">
+<img src="https://github.com/user-attachments/assets/edd5cf3e-cc43-450c-b343-f65aaea93b89" width="340px" height="260px">

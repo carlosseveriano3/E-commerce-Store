@@ -16,4 +16,4 @@ Dependencies:
 <br />
 <img src="https://github.com/user-attachments/assets/faddfbce-7830-4772-b064-f5dd21865570" width="530" height="240px">
 <br />
-<igm src="https://github.com/user-attachments/assets/9ce74bbf-e656-49a7-a32e-e85578730b50" width="530px" height="260px">
+<img src="https://github.com/user-attachments/assets/9ce74bbf-e656-49a7-a32e-e85578730b50" width="530px" height="260px">

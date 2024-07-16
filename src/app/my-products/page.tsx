@@ -1,32 +1,68 @@
 'use client'
 
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { MyBookshelfContext } from "@/context/bookshelf-context"
+import { MyProductsContext } from "@/context/my-products-context"
 import dynamic from "next/dynamic"
-import cardImages from "../card-images"
+import { getProductById } from "@/lib/products"
+import { Products } from "@/lib/types"
+import LoadingSingleProduct from "@/components/loadings/loadingSingleProduct"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
 
 const MyProducts = () => {
-  const { bookshelf } = useContext(MyBookshelfContext);
+  const { myProductsId } = useContext(MyProductsContext);
+  const [ myProducts, setMyProducts ] = useState<Array<Products | null> | any[]>();
+  const [ isLoading, setIsLoading ] = useState(false);
 
-  const books = cardImages.filter((book) => bookshelf.includes(book.id));
+  console.log(myProducts)
+
+  function notNull<Products>(val: Products | null): val is Products {
+    return val !== null;
+  }
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+
+      setIsLoading(true);
+
+      if (myProductsId) {
+        const res = await Promise.all (
+          myProductsId.map((id) => getProductById(id))
+        );
+        if (!res || res == null) {
+          return
+        }
+        let products = res.map((res) => res.product)
+        setMyProducts(products)
+      }
+      setIsLoading(false);
+    }
+
+    fetchProducts();
+  }, [myProductsId])
+
+  if (!myProducts) {
+    return
+  }
 
   return(
     <div className="w-[87%] mx-auto my-3">
 
       <span className="text-lg font-semibold">Meus produtos</span>
 
+      {isLoading && <LoadingSingleProduct />}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2">
-        {books.map(book => (
-        <div key={book.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
+      {myProducts && (
+      <>
+        {myProducts.map(product => (
+        <div key={product.id} className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden">
             
-          <Link href={`/products/${book.id}`}>
+          <Link href={`/products/${product.id}`}>
             <Image 
-              src={book.src}
+              src={product.thumbnail}
               alt="image"
               width={300}
               height={300}
@@ -35,13 +71,15 @@ const MyProducts = () => {
           </Link>
 
           <span className="text-sky-600 font-medium text-center block h-20 px-1">
-            <Link href={`/products/${book.id}`}>
-              {book.name}
+            <Link href={`/products/${product.id}`}>
+              {product.title}
             </Link>
           </span>
             
           </div>
         ))}
+      </>
+      )}
       </div>
     </div>
   )

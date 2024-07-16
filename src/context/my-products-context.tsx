@@ -5,13 +5,13 @@ import { Dispatch, SetStateAction, createContext, useState } from "react";
 export type MyProducts = string[]
 
 export type MyProductsContext = {
-  myProducts: MyProducts,
-  setMyProducts: Dispatch<SetStateAction<MyProducts>>
+  myProductsId: MyProducts,
+  setMyProductsId: Dispatch<SetStateAction<MyProducts>>
 }
 
 const defaultState = {
-  myProducts: [],
-  setMyProducts: (myProducts: MyProducts) => {}
+  myProductsId: [],
+  setMyProductsId: (myProductsId: MyProducts) => {}
 } as MyProductsContext
 
 export const MyProductsContext = createContext(defaultState);
@@ -19,7 +19,7 @@ export const MyProductsContext = createContext(defaultState);
 export default function MyProductsProvider({children} : {
   children : React.ReactNode;
 }) {
-  const [myProducts, setMyProducts] = useState<MyProducts>(() => {
+  const [myProductsId, setMyProductsId] = useState<MyProducts>(() => {
     if (typeof window !== "undefined") {
       const notesOnStorage = localStorage.getItem('myProducts')
       if (notesOnStorage) {
@@ -31,7 +31,7 @@ export default function MyProductsProvider({children} : {
   })
 
   return (
-    <MyProductsContext.Provider value={{myProducts, setMyProducts}}>
+    <MyProductsContext.Provider value={{myProductsId, setMyProductsId}}>
       {children}
     </MyProductsContext.Provider>
   )

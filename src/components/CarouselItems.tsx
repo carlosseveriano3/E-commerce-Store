@@ -5,6 +5,7 @@ import { Products } from "@/lib/types"
 import { FavoriteProductsContext } from "@/context/favorite-products-context";
 import { getProductsCategory } from "@/lib/products";
 import LoadingCarousel from "./loadings/LoadingCarousel";
+import { toast } from "sonner";
 
 import CartBlack from '../../public/assets/Cart-Black.svg';
 import FavoritesBlack from '../../public/assets/Favorites-Black.svg';
@@ -89,6 +90,8 @@ export default function CarouselItem({category}: {category: string}) {
     setFavoriteProductsId(newFavoriteProduct);
 
     localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProduct));
+    
+    toast.success('Produto adicionado aos favoritos')
   }
 
   return(

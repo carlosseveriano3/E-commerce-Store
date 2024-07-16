@@ -5,34 +5,45 @@ import Image from "next/image"
 import dynamic from "next/dynamic"
 import { useContext, useEffect, useState } from "react"
 import { FavoriteProductsContext } from "@/context/favorite-products-context"
-import { getFavoriteProductsById } from "@/lib/products"
+import { getProductById } from "@/lib/products"
 import { Products } from "@/lib/types"
+import LoadingSingleProduct from "@/components/loadings/loadingSingleProduct"
 
 import CartBlack from '../../../public/assets/Cart-Black.svg';
 import { X } from "lucide-react"
+import { toast } from "sonner"
+
+// type FavoriteProducts =  {
+//   products: Products[]
+// }
 
 // const FavoriteProducts = () => {
+
 export default function FavoriteProducts() {
 
   const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
-  const [ favoriteProducts, setFavoriteProducts ] = useState<Products[] | {}>()
+  const [ favoriteProducts, setFavoriteProducts ] = useState<Array<Products | null> | any[]>();
   const [ isLoading, setIsLoading ] = useState(false)
 
   console.log(favoriteProducts)
 
+  // ver a parte do componente Await do next-navigation
+
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProducts = async () => {
 
       setIsLoading(true);
 
       if (favoriteProductsId) {
         const res = await Promise.all (
-          favoriteProductsId.map((id) => getFavoriteProductsById(id)) 
+          favoriteProductsId.map((id) => getProductById(id)) 
         )
-        if (!res) {
-          throw new Error('Failed in fetch products!');
-        }
-        setFavoriteProducts(res.map((res) => res.product))
+        console.log(res)
+          let products = res.map((res) => res.product)
+          if (!products || products === null) {
+            return
+          }
+          setFavoriteProducts(products)
       }
 
       
@@ -43,8 +54,8 @@ export default function FavoriteProducts() {
       setIsLoading(false);
     }
 
-    fetchProduct()
-  }, [])
+    fetchProducts();
+  }, [favoriteProductsId])
 
   // const books = cardImages.filter((book) => favoriteProductsId.includes(book.id));
 
@@ -53,27 +64,30 @@ export default function FavoriteProducts() {
     const newFavoriteBooks = favoriteProductsId.filter((product) => product !== id);
     setFavoriteProductsId(newFavoriteBooks);
 
-    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks));
+    localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteBooks));
+
+    toast.success('Produto removido com sucesso!')
   }
 
   return(
-    <div className="w-[87%] mx-auto my-3">
+    <div className="w-[87%] xl:w-[75%] mx-auto my-3">
 
       <span className="text-lg font-semibold">Meus favoritos</span>
 
+      {isLoading && <LoadingSingleProduct />}
+
       <div 
-        className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2" 
-        style={{
-            transform: 'scale(1)'
-         }}
-      >
+        className=" grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2" 
         
+      >
+       {favoriteProducts != null && ( 
+        <>
         {favoriteProducts?.map(products => (
         <div key={products.id} 
-          className="bg-white space-y-2 py-1 pb-0 rounded-md overflow-hidden group relative">
+          className="relative bg-white space-y-2 py-1 pb-0 rounded-md group">
 
         <button 
-          className="fixed translate-x-[140px] -translate-y-3 bg-red-500 rounded-full z-10"
+          className=" bg-red-500 rounded-full absolute -right-3 -top-3"
           onClick={() => removeFromFavorites(products.id)}
         >
           <X className="size-7"
@@ -102,7 +116,7 @@ export default function FavoriteProducts() {
           </span>
 
           <div className="">  
-            <Link href={`/products/${products.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 group">
+            <Link href={`/products/${products.id}`} className="bg-lime-400 h-10 flex items-center justify-center gap-1 rounded-b-lg group">
               <Image 
                 src={CartBlack}
                 alt="cart-black"
@@ -116,6 +130,8 @@ export default function FavoriteProducts() {
             
           </div>
         ))}
+        </>
+      )}
       </div>
     </div>
   )

@@ -1,30 +1,25 @@
 'use client'
 
-import { CardImages } from "@/app/card-images";
 import { useContext, useState } from "react";
-import { FavoriteBooksContext } from "@/context/favorite-books-context";
+import { FavoriteProductsContext } from "@/context/favorite-products-context";
 import { Products } from "@/lib/types";
-import Image from "next/image";
 
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShareIcon } from "@heroicons/react/24/outline";
 
-type BooksProps = CardImages
-
 export default function Tabs(
   { product }: { product: Products}
 ) {
+  const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
   const [currentTab, setCurrentTab] = useState("1");
   const [favIconClicked, setFavIconClicked] = useState(false)
 
-  const { favoriteBooks ,setFavoriteBooks } = useContext(FavoriteBooksContext);
-
   function addToFavoriteBooks(id:string) {
-    const newFavoriteBooks = [...favoriteBooks, id];
+    const newFavoriteProducts = [...favoriteProductsId, id];
 
-    setFavoriteBooks(newFavoriteBooks);
+    setFavoriteProductsId(newFavoriteProducts);
 
-    localStorage.setItem('favoriteBooks', JSON.stringify(newFavoriteBooks))
+    localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProducts))
   }
 
   const tabs = [

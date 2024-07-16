@@ -7,6 +7,7 @@ import { useContext, useState, useEffect } from "react";
 import { Products } from "@/lib/types";
 import { getProductById } from "@/lib/products";
 import LoadingSingleProduct from "@/components/loadings/loadingSingleProduct";
+import { toast } from "sonner";
 
 import Tabs from "@/components/Tabs"
 import CartBlack from '../../../../public/assets/Cart-Black.svg';
@@ -16,7 +17,7 @@ export default function Product ({
 }: {
   params: {id: string}; 
 }) {
-  const { myProducts, setMyProducts } = useContext(MyProductsContext);
+  const { myProductsId, setMyProductsId } = useContext(MyProductsContext);
   const [ singleProduct, setSingleProduct ] = useState<Products>()
   const [ isLoading, setIsLoading ] = useState(false);
 
@@ -41,11 +42,13 @@ export default function Product ({
   }, [])
 
   function addToMyProducts(id: string) {
-    const newProducts = [...myProducts, id];
+    const newProducts = [...myProductsId, id];
 
-    setMyProducts(newProducts);
+    setMyProductsId(newProducts);
 
     localStorage.setItem('myProducts', JSON.stringify(newProducts));
+
+    toast.success('Compra efetuada! Pedido adicionado ao "Meus Produtos"!')
   }
   
   return(

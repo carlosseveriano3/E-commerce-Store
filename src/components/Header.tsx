@@ -25,13 +25,9 @@ export function Header() {
     setSearch(event.target.value)
   }
 
-  // useEffect(() => {
-  //   router.push(`/search-books?search=${search}`)
-  // }, [search, router])
-
   function enterSearch() {
     console.log("foi")
-    router.push(`/search-books?search=${search}`)
+    router.push(`/search-products?search=${search}`)
   }
 
   const handleResize = () => {
@@ -177,8 +173,8 @@ export function Header() {
           
           <div className="-translate-x-[63px] md:-translate-x-14">
             <span>
-              <Link href="/my-bookshelf" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
-                Minha estante de livros
+              <Link href="/my-products" className="md:hover:bg-slate-600 md:hover:rounded-md md:p-2 md:inline-block">
+                Meus produtos
               </Link>
             </span>
           </div>

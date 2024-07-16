@@ -3,6 +3,7 @@
 import { useContext, useState } from "react";
 import { FavoriteProductsContext } from "@/context/favorite-products-context";
 import { Products } from "@/lib/types";
+import { toast } from "sonner";
 
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShareIcon } from "@heroicons/react/24/outline";
@@ -11,15 +12,26 @@ export default function Tabs(
   { product }: { product: Products}
 ) {
   const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
-  const [currentTab, setCurrentTab] = useState("1");
-  const [favIconClicked, setFavIconClicked] = useState(false)
+  const [ currentTab, setCurrentTab ] = useState("1");
+  const [ favIconClicked, setFavIconClicked ] = useState(false)
+
+  console.log(favoriteProductsId)
 
   function addToFavoriteBooks(id:string) {
+    const repeatedProdutcs = favoriteProductsId.map(product => product === id)
+    console.log(repeatedProdutcs)
+    if (favoriteProductsId) {
+      toast.success('Produto já adicionado aos favoritos!');
+      return
+    }
+
     const newFavoriteProducts = [...favoriteProductsId, id];
 
     setFavoriteProductsId(newFavoriteProducts);
 
-    localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProducts))
+    localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProducts));
+
+    toast.success('Produto adicionado aos Favoritos')
   }
 
   const tabs = [

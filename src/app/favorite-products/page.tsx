@@ -25,7 +25,7 @@ export default function FavoriteProducts() {
   const [ favoriteProducts, setFavoriteProducts ] = useState<Array<Products | null> | any[]>();
   const [ isLoading, setIsLoading ] = useState(false)
 
-  console.log(favoriteProducts)
+  console.log(favoriteProductsId)
 
   // ver a parte do componente Await do next-navigation
 

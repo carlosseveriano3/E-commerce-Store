@@ -85,6 +85,13 @@ export default function CarouselItem({category}: {category: string}) {
   }, [])
 
   function addToFavoriteBooks(id: string) {
+    const repeatedProdutcs = favoriteProductsId.some(product => product === id)
+    console.log(repeatedProdutcs)
+    if (repeatedProdutcs) {
+      toast.success('Produto já adicionado aos favoritos!');
+      return
+    }
+
     const newFavoriteProduct = [...favoriteProductsId, id];
 
     setFavoriteProductsId(newFavoriteProduct);

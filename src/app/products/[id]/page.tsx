@@ -21,7 +21,7 @@ export default function Product ({
   const [ singleProduct, setSingleProduct ] = useState<Products>()
   const [ isLoading, setIsLoading ] = useState(false);
 
-  console.log(singleProduct)
+  console.log(myProductsId)
 
   useEffect(() => {
     const fetchProduct = async () => {

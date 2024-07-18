@@ -22,4 +22,4 @@ Demonstration:
 <br />
 <img src="https://github.com/user-attachments/assets/edd5cf3e-cc43-450c-b343-f65aaea93b89" width="400px" height="260px">
 <br />
-<img src="https://github.com/user-attachments/assets/bfb74ace-93c6-4fe8-9181-9afc5dde7798" width="530px" height="260px">
+<img src="https://github.com/user-attachments/assets/bfb74ace-93c6-4fe8-9181-9afc5dde7798" width="490px" height="260px">

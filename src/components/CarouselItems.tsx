@@ -21,7 +21,7 @@ export default function CarouselItem({category}: {category: string}) {
   const [isLoading, setIsLoading] = useState(false);
   const [allProducts, setAllProducts ] = useState<Products[]>([])
 
-  console.log(allProducts)
+  // console.log(allProducts)
 
   let settings = {
     dots: false,
@@ -86,7 +86,7 @@ export default function CarouselItem({category}: {category: string}) {
 
   function addToFavoriteBooks(id: string) {
     const repeatedProdutcs = favoriteProductsId.some(product => product === id)
-    console.log(repeatedProdutcs)
+    // console.log(repeatedProdutcs)
     if (repeatedProdutcs) {
       toast.success('Produto já adicionado aos favoritos!');
       return
@@ -99,6 +99,11 @@ export default function CarouselItem({category}: {category: string}) {
     localStorage.setItem('favoriteProducts', JSON.stringify(newFavoriteProduct));
     
     toast.success('Produto adicionado aos favoritos')
+  }
+
+  function warningToast() {
+    toast.success('Clique em "comprar" novamente, para efetuar a compra!');
+    console.log('toast')
   }
 
   return(
@@ -136,7 +141,9 @@ export default function CarouselItem({category}: {category: string}) {
                   alt="cart-black"
                   className="group-hover:size-[25px]"
                 />
-                <span className="text-lg font-medium text-black group-hover:text-[19px]">
+                <span className="text-lg font-medium text-black group-hover:text-[19px]"
+                  onClick={warningToast}
+                >
                   Comprar
                 </span>
               </Link>

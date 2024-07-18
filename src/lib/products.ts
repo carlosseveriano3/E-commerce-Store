@@ -15,7 +15,7 @@ export async function getProductsCategory(
     const res = await fetch(`${base_url}/category/${category}?limit=10`);
     const data = await res.json();
 
-    console.log(data)
+    // console.log(data)
 
     if (typeof data === 'string' || !data) {
       throw new Error('Failed to fetch products')

@@ -21,7 +21,7 @@ export default function Product ({
   const [ singleProduct, setSingleProduct ] = useState<Products>()
   const [ isLoading, setIsLoading ] = useState(false);
 
-  console.log(myProductsId)
+  // console.log(myProductsId)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -42,6 +42,13 @@ export default function Product ({
   }, [])
 
   function addToMyProducts(id: string) {
+    const repeatedProdutcs = myProductsId.some(product => product === id);
+
+    if (repeatedProdutcs) {
+      toast.success('Produto já adquirido!')
+      return
+    }
+
     const newProducts = [...myProductsId, id];
 
     setMyProductsId(newProducts);
@@ -68,7 +75,7 @@ export default function Product ({
         </div>
 
         <div className="flex justify-center md:col-start-1">
-          <Tabs product={singleProduct}/>
+          <Tabs product={singleProduct} id={id}/>
         </div>
       </div>
 

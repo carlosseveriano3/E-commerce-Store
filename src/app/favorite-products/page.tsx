@@ -17,15 +17,13 @@ import { toast } from "sonner"
 //   products: Products[]
 // }
 
-// const FavoriteProducts = () => {
-
-export default function FavoriteProducts() {
+const FavoriteProducts = () => {
 
   const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
   const [ favoriteProducts, setFavoriteProducts ] = useState<Array<Products | null> | any[]>();
   const [ isLoading, setIsLoading ] = useState(false)
 
-  console.log(favoriteProductsId)
+  // console.log(favoriteProductsId)
 
   // ver a parte do componente Await do next-navigation
 
@@ -48,7 +46,7 @@ export default function FavoriteProducts() {
 
       
       // console.log(product);
-      console.log(favoriteProductsId)
+      // console.log(favoriteProductsId)
       // setFavoriteProductsId(product);
 
       setIsLoading(false);
@@ -73,6 +71,10 @@ export default function FavoriteProducts() {
     <div className="w-[87%] xl:w-[75%] mx-auto my-3">
 
       <span className="text-lg font-semibold">Meus favoritos</span>
+
+      {favoriteProductsId.length < 1 && (
+        <p className="mt=2">Você ainda não tem favoritos!</p>
+      )}
 
       {isLoading && <LoadingSingleProduct />}
 
@@ -137,4 +139,4 @@ export default function FavoriteProducts() {
   )
 }
 
-// export default dynamic (() => Promise.resolve(FavoriteProducts), {ssr: false})
+export default dynamic (() => Promise.resolve(FavoriteProducts), {ssr: false})

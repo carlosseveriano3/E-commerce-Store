@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FavoriteProductsContext } from "@/context/favorite-products-context";
 import { Products } from "@/lib/types";
 import { toast } from "sonner";
@@ -8,19 +8,25 @@ import { toast } from "sonner";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShareIcon } from "@heroicons/react/24/outline";
 
-export default function Tabs(
-  { product }: { product: Products}
+export default function Tabs({ 
+  product,
+  id
+}: { 
+  product: Products,
+  id: string
+}
 ) {
   const { favoriteProductsId, setFavoriteProductsId } = useContext(FavoriteProductsContext);
   const [ currentTab, setCurrentTab ] = useState("1");
   const [ favIconClicked, setFavIconClicked ] = useState(false)
 
-  console.log(favoriteProductsId)
+  // console.log(favoriteProductsId)
 
   function addToFavoriteBooks(id:string) {
-    const repeatedProdutcs = favoriteProductsId.map(product => product === id)
-    console.log(repeatedProdutcs)
-    if (favoriteProductsId) {
+    const repeatedProdutcs = favoriteProductsId.some(product => product === id);
+    // console.log(repeatedProdutcs)
+
+    if (repeatedProdutcs) {
       toast.success('Produto já adicionado aos favoritos!');
       return
     }
@@ -33,6 +39,18 @@ export default function Tabs(
 
     toast.success('Produto adicionado aos Favoritos')
   }
+
+  function handleFavoriteIconColor(id: string) {
+
+  }
+
+  useEffect(() => {
+      const alreadyAddedToProducts = favoriteProductsId.some(product => id == product);
+      if (alreadyAddedToProducts) {
+        setFavIconClicked(true);
+        return
+      }
+  }, [favoriteProductsId])
 
   const tabs = [
     {
@@ -69,7 +87,7 @@ export default function Tabs(
             
             <button 
               className="absolute right-2"
-              onClick={() => setFavIconClicked(!favIconClicked)}
+              onClick={() => handleFavoriteIconColor(product.id)}
             >
               <HeartIcon 
                 className={`size-9 text-red`} 

@@ -9,15 +9,12 @@ import { getProductById } from "@/lib/products"
 import { Products } from "@/lib/types"
 import LoadingSingleProduct from "@/components/loadings/loadingSingleProduct"
 
-import CartBlack from '../../../public/assets/Cart-Black.svg';
-import FavoritesBlack from '../../../public/assets/Favorites-Black.svg';
-
 const MyProducts = () => {
   const { myProductsId } = useContext(MyProductsContext);
   const [ myProducts, setMyProducts ] = useState<Array<Products | null> | any[]>();
   const [ isLoading, setIsLoading ] = useState(false);
 
-  console.log(myProducts)
+  console.log(myProductsId)
 
   function notNull<Products>(val: Products | null): val is Products {
     return val !== null;
@@ -51,7 +48,11 @@ const MyProducts = () => {
   return(
     <div className="w-[87%] mx-auto my-3">
 
-      <span className="text-lg font-semibold">Meus produtos</span>
+      <h1 className="text-lg font-semibold">Meus produtos</h1>
+
+      {myProductsId.length < 1 && (
+        <p className="mt-2">Você ainda não tem produtos comprados!</p>
+      )}
 
       {isLoading && <LoadingSingleProduct />}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-2">

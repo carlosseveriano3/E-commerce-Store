@@ -1,4 +1,4 @@
-This e-commerce project was made with NextJs, and used DummyJson api to include the products.
+This e-commerce project was made with NextJs, and used DummyJson API to include the products.
 
 The stylization and responsiviness was made with “Tailwind css”.
 

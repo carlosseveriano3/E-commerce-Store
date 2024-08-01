@@ -1,8 +1,8 @@
-This e-commerce project was made with NextJs, and used DummyJson API to include the products.
-
-The stylization and responsiviness was made with “Tailwind css”.
-
-All the favorites and 'bought' products are saved in localStorage.
+ - Project created with Next.js and Typescript along with API consumption.
+ - Created many important features for an e-commerce store such as bookmarks, bought products and search bar.
+ - Use of Styled Components such as React-Slick to make a carousel of products.
+ - Persistence of bookmarked and “bought” products in localStorage for a better experience.
+ - Responsiveness with any device achieved with Tailwind css.
 
 Dependencies:
  - NextJs
